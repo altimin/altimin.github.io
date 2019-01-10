@@ -1,0 +1,17 @@
+<script>
+console.log('Page load v3');
+
+let url = new URL(window.location.href)
+let listeners = url.searchParams.get("listeners").split(",")
+
+for (i in listeners) {
+    let listener = listeners[i];
+    var target = window;
+    if (listener === "freeze" || listener === "resume")
+        target = document;
+    target.addEventListener(listener, (event) => {
+        console.log("on" + listener);
+    });
+}
+
+</script>
